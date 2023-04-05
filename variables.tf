@@ -153,6 +153,16 @@ variable "aft_feature_disable_private_networking" {
   }
 }
 
+variable "aft_feature_disable_dynamodb_backups" {
+  description = "Feature flag toggling disabling dynamodb on/off"
+  type        = bool
+  default     = false
+  validation {
+    condition     = contains([true, false], var.aft_feature_disable_dynamodb_backups)
+    error_message = "Valid values for var: aft_feature_disable_dynamodb_backups are (true, false)."
+  }
+}
+
 #########################################
 # AFT Customer VCS Variables
 #########################################

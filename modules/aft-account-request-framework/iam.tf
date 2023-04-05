@@ -169,10 +169,12 @@ resource "aws_iam_role_policy" "aft_invoke_aft_account_provisioning_framework" {
 ######### aft_aws_backup #########
 
 resource "aws_iam_role" "aft_aws_backup" {
+  count = var.aft_feature_disable_dynamodb_backups ? 1 : 0
   name               = "aft-aws-backup"
   assume_role_policy = templatefile("${path.module}/iam/trust-policies/backup.tpl", { none = "none" })
 }
 resource "aws_iam_role_policy_attachment" "aft_aws_backup_service_role" {
-  role       = aws_iam_role.aft_aws_backup.name
+  count = var.aft_feature_disable_dynamodb_backups ? 1 : 0
+  role       = aws_iam_role.aft_aws_backup[0].name
   policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
 }
