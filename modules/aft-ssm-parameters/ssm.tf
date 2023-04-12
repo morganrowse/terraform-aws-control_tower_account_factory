@@ -241,12 +241,6 @@ resource "aws_ssm_parameter" "aft_config_backend_primary_region" {
   value = var.aft_config_backend_primary_region
 }
 
-resource "aws_ssm_parameter" "aft_config_backend_secondary_region" {
-  name  = "/aft/config/oss-backend/secondary-region"
-  type  = "String"
-  value = var.aft_config_backend_secondary_region
-}
-
 resource "aws_ssm_parameter" "aft_config_backend_kms_key_id" {
   name  = "/aft/config/oss-backend/kms-key-id"
   type  = "String"

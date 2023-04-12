@@ -174,10 +174,6 @@ variable "aft_config_backend_primary_region" {
   type = string
 }
 
-variable "aft_config_backend_secondary_region" {
-  type = string
-}
-
 variable "aft_config_backend_kms_key_id" {
   type = string
 }

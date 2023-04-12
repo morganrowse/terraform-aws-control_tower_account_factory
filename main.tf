@@ -53,11 +53,9 @@ module "aft_account_request_framework" {
 module "aft_backend" {
   providers = {
     aws.primary_region   = aws.aft_management
-    aws.secondary_region = aws.tf_backend_secondary_region
   }
   source           = "./modules/aft-backend"
   primary_region   = var.ct_home_region
-  secondary_region = var.tf_backend_secondary_region
 }
 
 module "aft_code_repositories" {
@@ -235,7 +233,6 @@ module "aft_ssm_parameters" {
   account_request_repo_name                                   = var.account_request_repo_name
   vcs_provider                                                = var.vcs_provider
   aft_config_backend_primary_region                           = var.ct_home_region
-  aft_config_backend_secondary_region                         = var.tf_backend_secondary_region
   aft_framework_repo_url                                      = var.aft_framework_repo_url
   aft_framework_repo_git_ref                                  = local.aft_framework_repo_git_ref
   terraform_token                                             = var.terraform_token

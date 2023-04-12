@@ -110,10 +110,6 @@ output "terraform_distribution" {
   value = var.terraform_distribution
 }
 
-output "tf_backend_secondary_region" {
-  value = var.tf_backend_secondary_region
-}
-
 output "terraform_org_name" {
   value = var.terraform_org_name
 }
